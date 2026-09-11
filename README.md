@@ -1,4 +1,4 @@
-# Academia
+# Academya
 
 Aplicativo móvel para organização e comunicação acadêmica, desenvolvido para centralizar provas, trabalhos, tarefas, compromissos e comunicados em um único ambiente simples e acessível.
 
@@ -16,7 +16,7 @@ A vida acadêmica envolve uma grande quantidade de informações que, frequentem
 
 Essa fragmentação pode fazer com que estudantes percam prazos, esqueçam provas ou tenham dificuldade para acompanhar as atividades de diferentes disciplinas. Para professores, também pode ser trabalhoso comunicar alterações, publicar atividades e manter os alunos informados de maneira organizada.
 
-O Academia surge com o objetivo de solucionar esse problema, reunindo em um único aplicativo as principais informações relacionadas à rotina acadêmica.
+O Academya surge com o objetivo de solucionar esse problema, reunindo em um único aplicativo as principais informações relacionadas à rotina acadêmica.
 
 A proposta é oferecer uma plataforma que combine organização pessoal, calendário acadêmico e comunicação entre professores e estudantes, tornando o acompanhamento das atividades mais simples e acessível.
 
@@ -60,7 +60,7 @@ Dessa forma, o aplicativo evita que informações importantes fiquem perdidas em
 
 Um único lugar para o estudante saber o que precisa fazer, quando precisa fazer e onde encontrar as informações importantes da sua vida acadêmica.
 
-O Academia busca eliminar a necessidade de utilizar diversas ferramentas diferentes para organizar a rotina acadêmica.
+O Academya busca eliminar a necessidade de utilizar diversas ferramentas diferentes para organizar a rotina acadêmica.
 
 Em vez de procurar uma informação em um grupo de mensagens, outra em uma plataforma de ensino e outra no calendário pessoal, o usuário poderá encontrar essas informações centralizadas no aplicativo.
 
@@ -77,7 +77,7 @@ No final, o estudante precisa ser responsável por reunir todas essas informaç�
 
 ## A solução
 
-O Academia centraliza a vida acadêmica em um único aplicativo.
+O Academya centraliza a vida acadêmica em um único aplicativo.
 
 O estudante consegue visualizar suas disciplinas, provas, trabalhos, tarefas e compromissos em um calendário integrado. Ao mesmo tempo, professores podem publicar atividades e comunicados diretamente para suas turmas.
 
@@ -85,11 +85,11 @@ Quando uma atividade é criada ou alterada, a informação chega diretamente aos
 
 Assim, o aplicativo transforma informações acadêmicas dispersas em uma rotina organizada e fácil de acompanhar.
 
-# Por que o Academia deve existir?
+# Por que o Academya deve existir?
 
 Porque ferramentas tradicionais de produtividade são genéricas, enquanto sistemas acadêmicos normalmente são desenvolvidos pensando principalmente na gestão institucional.
 
-O Academia propõe uma experiência centrada no dia a dia do estudante.
+O Academya propõe uma experiência centrada no dia a dia do estudante.
 
 A ideia não é criar apenas mais um calendário, mas conectar a organização pessoal com o contexto acadêmico.
 
@@ -101,9 +101,9 @@ Essa integração reduz a quantidade de informações que o estudante precisa co
 
 # 🏆 Diferencial competitivo
 
-O principal diferencial do Academia é a união de organização pessoal e comunicação acadêmica.
+O principal diferencial do Academya é a união de organização pessoal e comunicação acadêmica.
 
-Enquanto um calendário tradicional apenas registra um evento, o Academia entende o contexto daquele evento.
+Enquanto um calendário tradicional apenas registra um evento, o Academya entende o contexto daquele evento.
 
 Uma prova:
 
@@ -180,7 +180,7 @@ A arquitetura será organizada de forma modular para permitir a evolução do MV
 
 ```
 📂 Estrutura inicial
-academia/
+Academya/
 ├── assets/
 │   ├── images/
 │   ├── icons/
@@ -230,3 +230,5 @@ O MVP deverá permitir que um estudante:
 - Receba comunicados relacionados à sua vida acadêmica.
 
 Ao mesmo tempo, professores deverão conseguir cadastrar atividades e enviar comunicados para suas respectivas turmas.
+
+É possível acessar um protótipo realizado no Figma [aqui](https://www.figma.com/design/GhM1IwJbUVkymfnQ3AStZy/cp1_flutter--Copy-?node-id=0-1&t=mCNPpgEFniuZltU6-1).
