@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "138098843263",
+    "project_id": "academya-fiap-4547a",
+    "storage_bucket": "academya-fiap-4547a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138098843263:android:8496e98895ddb72426694a",
+        "android_client_info": {
+          "package_name": "br.com.academya.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWn7jnK-ZiV1_Eg7144z5FppV-YnvGmc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

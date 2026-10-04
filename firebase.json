@@ -1,0 +1,26 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "academya-fiap-4547a",
+          "appId": "1:138098843263:android:8496e98895ddb72426694a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "academya-fiap-4547a",
+          "configurations": {
+            "android": "1:138098843263:android:8496e98895ddb72426694a",
+            "web": "1:138098843263:web:29b55802cbcdf2d926694a",
+            "windows": "1:138098843263:web:c7a558ab5b8cd9ef26694a"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}

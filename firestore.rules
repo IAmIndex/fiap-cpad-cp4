@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
+
+    match /users/{userId} {
+      allow get: if signedIn() && request.auth.uid == userId;
+      allow create, update: if signedIn() && request.auth.uid == userId
+        && request.resource.data.keys().hasOnly(['fullName', 'email', 'updatedAt'])
+        && request.resource.data.fullName is string
+        && request.resource.data.fullName.size() > 0
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.updatedAt == request.time;
+    }
+
+    match /classes/{classId} {
+      // Class metadata is discoverable by authenticated users for code lookup.
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly([
+          'id', 'name', 'creatorId', 'creatorName', 'joinCode', 'type', 'memberIds'
+        ])
+        && request.resource.data.id == classId
+        && request.resource.data.creatorId == request.auth.uid
+        && request.resource.data.memberIds == [request.auth.uid]
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 3
+        && request.resource.data.creatorName is string
+        && request.resource.data.joinCode is string
+        && request.resource.data.joinCode.matches('^[A-Z2-9]{6}$')
+        && request.resource.data.type in ['classroom', 'studyGroup'];
+      allow update: if signedIn()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['memberIds'])
+        && request.resource.data.memberIds is list
+        && request.resource.data.memberIds.toSet()
+          == resource.data.memberIds.toSet().union([request.auth.uid].toSet())
+        && request.resource.data.memberIds.size()
+          == request.resource.data.memberIds.toSet().size();
+
+      match /publications/{publicationId} {
+        function parentClass() {
+          return get(/databases/$(database)/documents/classes/$(classId)).data;
+        }
+        allow read: if signedIn() && request.auth.uid in parentClass().memberIds;
+        allow create: if signedIn() && parentClass().creatorId == request.auth.uid
+          && request.resource.data.keys().hasOnly([
+            'id', 'classId', 'title', 'description', 'type', 'authorName', 'createdAt'
+          ])
+          && request.resource.data.id == publicationId
+          && request.resource.data.classId == classId
+          && request.resource.data.title is string
+          && request.resource.data.title.size() > 0
+          && request.resource.data.title.size() <= 50
+          && request.resource.data.description is string
+          && request.resource.data.description.size() > 0
+          && request.resource.data.description.size() <= 900
+          && request.resource.data.type in ['notice', 'material', 'activity']
+          && request.resource.data.authorName is string
+          && request.resource.data.createdAt is string;
+      }
+    }
+  }
+}

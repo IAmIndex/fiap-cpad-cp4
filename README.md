@@ -1,234 +1,163 @@
 # Academya
 
-Aplicativo móvel para organização e comunicação acadêmica, desenvolvido para centralizar provas, trabalhos, tarefas, compromissos e comunicados em um único ambiente simples e acessível.
+Aplicativo Flutter para comunicacao entre professores e alunos em instituicoes escolares. O MVP centraliza turmas, grupos de estudo, comunicados, materiais e atividades em uma experiencia mobile navegavel, componentizada e preparada para sincronizacao com Firebase.
 
-# 👥 Integrantes
-|            Nome            |   RM   |           Função           |
-|:--------------------------:|:------:|:--------------------------:|
-|    Gustavo Hackime Costa   | 563751 | Desenvolvedor / Planejador |
-| Luiz Henrique Macedo Graça | 564704 | Planejador / Desenvolvedor |
-|   Riquelme Santos da Mata  | 565053 |   Designer / Organizador   |
+## Integrantes
 
+| Nome | RM | Funcao |
+| --- | --- | --- |
+| Gustavo Hackime Costa | 563751 | Desenvolvedor / Planejador |
+| Luiz Henrique Macedo Graca | 564704 | Planejador / Desenvolvedor |
+| Riquelme Santos da Mata | 565053 | Designer / Organizador |
 
-# 📌 Descrição inicial
+## Funcionalidades implementadas
 
-A vida acadêmica envolve uma grande quantidade de informações que, frequentemente, ficam distribuídas entre diferentes ferramentas: grupos de mensagens, e-mails, calendários, plataformas de ensino e anotações pessoais.
+- Login e cadastro reais com Firebase Authentication (e-mail/senha).
+- Cadastro com nome completo e senha de pelo menos 6 caracteres, incluindo letras e numeros.
+- Restauracao da sessao, logout real e recuperacao de senha por e-mail.
+- Lista rolavel de turmas do usuario, com nome, criador, tipo e codigo.
+- Modal no botao `+` para entrar por codigo ou criar turma/grupo de estudos.
+- Tela da turma com publicacoes persistidas no Firestore e faixa colorida por tipo.
+- Modal de expansao para visualizar o conteudo completo da publicacao.
+- Criacao de publicacao visivel somente para o criador da turma.
+- Formulario de publicacao com titulo ate 50 caracteres, descricao ate 900 caracteres, contador e tipo.
+- Perfis em `users/{uid}`, turmas e publicacoes com gravacoes pontuais no Firestore.
+- Layouts adaptados para celular, tablet, desktop e orientacao horizontal.
+- Formularios e modais rolaveis com teclado aberto e suporte a fontes ampliadas.
+- Modo claro, modo escuro e opcao de seguir o sistema, com preferencia salva no aparelho.
 
-Essa fragmentação pode fazer com que estudantes percam prazos, esqueçam provas ou tenham dificuldade para acompanhar as atividades de diferentes disciplinas. Para professores, também pode ser trabalhoso comunicar alterações, publicar atividades e manter os alunos informados de maneira organizada.
+## Identidade visual
 
-O Academya surge com o objetivo de solucionar esse problema, reunindo em um único aplicativo as principais informações relacionadas à rotina acadêmica.
+| Cor | Hexadecimal | Uso |
+| --- | --- | --- |
+| Foreground / Primaria | `#9381FF` | Acoes principais |
+| Background | `#2C2C29` | Fundo da aplicacao |
+| Surface | `#EEEBFF` | Cards e campos |
+| Accent | `#E34A6F` | Destaques e acoes flutuantes |
+| Dark Accent | `#580E20` | Contraste em textos e detalhes |
 
-A proposta é oferecer uma plataforma que combine organização pessoal, calendário acadêmico e comunicação entre professores e estudantes, tornando o acompanhamento das atividades mais simples e acessível.
+## Tecnologias
 
-# Público-alvo
+- Flutter e Dart.
+- Material 3.
+- Firebase Core, Firebase Auth e Cloud Firestore.
+- Estado local com `ChangeNotifier` e `InheritedNotifier`, sem pacote externo de state management.
+- Navegacao pela API nativa do Flutter com rotas nomeadas.
+- Shared Preferences para persistir a preferencia de aparencia.
 
-O aplicativo tem como público-alvo:
+## Estrutura de pastas
 
-- Estudantes do ensino médio;
-- Estudantes de cursos técnicos;
-- Estudantes de graduação e pós-graduação;
-- Professores de instituições de ensino.
-
-Em versões futuras, a solução também poderá ser disponibilizada para instituições de ensino, oferecendo ferramentas administrativas e integrações com seus sistemas acadêmicos.
-
-# 🚀 Principais funcionalidades — MVP
-**Para estudantes**
-- Cadastro e login;
-- Cadastro e visualização de disciplinas;
-- Calendário acadêmico;
-- Cadastro de provas, trabalhos e outras atividades;
-- Lista de tarefas pendentes;
-- Visualização das atividades da semana;
-- Indicadores de atividades próximas e atrasadas;
-- Notificações de prazos;
-- Recebimento de comunicados dos professores.
-
-**Para professores**
-- Cadastro e gerenciamento de turmas;
-- Cadastro de disciplinas;
-- Criação de atividades para os alunos;
-- Publicação de comunicados;
-- Alteração ou cancelamento de atividades;
-- Notificação dos alunos sobre alterações.
-- Comunicação acadêmica
-
-As comunicações serão relacionadas às disciplinas e atividades, permitindo que os usuários encontrem informações no contexto em que elas são relevantes, além da possibilidade da criação de grupos de estudos.
-
-Dessa forma, o aplicativo evita que informações importantes fiquem perdidas em diferentes canais de comunicação.
-
-# 💡 Proposta de valor
-
-Um único lugar para o estudante saber o que precisa fazer, quando precisa fazer e onde encontrar as informações importantes da sua vida acadêmica.
-
-O Academya busca eliminar a necessidade de utilizar diversas ferramentas diferentes para organizar a rotina acadêmica.
-
-Em vez de procurar uma informação em um grupo de mensagens, outra em uma plataforma de ensino e outra no calendário pessoal, o usuário poderá encontrar essas informações centralizadas no aplicativo.
-
-A principal proposta é unir vida acadêmica, organização e comunicação.
-
-# 🎤 Pitch
-## O problema
-
-A rotina acadêmica está espalhada em diferentes lugares.
-
-Uma prova pode estar registrada no calendário, o trabalho pode ter sido enviado por uma plataforma de ensino, uma mudança de data pode estar em um grupo de mensagens e um comunicado importante pode estar perdido no meio de várias conversas.
-
-No final, o estudante precisa ser responsável por reunir todas essas informações.
-
-## A solução
-
-O Academya centraliza a vida acadêmica em um único aplicativo.
-
-O estudante consegue visualizar suas disciplinas, provas, trabalhos, tarefas e compromissos em um calendário integrado. Ao mesmo tempo, professores podem publicar atividades e comunicados diretamente para suas turmas.
-
-Quando uma atividade é criada ou alterada, a informação chega diretamente aos alunos afetados.
-
-Assim, o aplicativo transforma informações acadêmicas dispersas em uma rotina organizada e fácil de acompanhar.
-
-# Por que o Academya deve existir?
-
-Porque ferramentas tradicionais de produtividade são genéricas, enquanto sistemas acadêmicos normalmente são desenvolvidos pensando principalmente na gestão institucional.
-
-O Academya propõe uma experiência centrada no dia a dia do estudante.
-
-A ideia não é criar apenas mais um calendário, mas conectar a organização pessoal com o contexto acadêmico.
-
-Por exemplo:
-
-**O professor altera a data de uma prova → o aluno recebe uma notificação → o calendário é atualizado → a atividade continua vinculada à disciplina.**
-
-Essa integração reduz a quantidade de informações que o estudante precisa controlar manualmente.
-
-# 🏆 Diferencial competitivo
-
-O principal diferencial do Academya é a união de organização pessoal e comunicação acadêmica.
-
-Enquanto um calendário tradicional apenas registra um evento, o Academya entende o contexto daquele evento.
-
-Uma prova:
-
-- pertence a uma disciplina;
-- possui um professor;
-- pertence a uma turma;
-- possui uma data e horário;
-- pode sofrer alterações;
-- precisa gerar uma comunicação aos alunos.
-
-Essa estrutura permite que comunicação e organização trabalhem juntas.
-
-O objetivo é conectar toda a informação necessária para que ele consiga realizá-la.
-
-# 💰 Modelo de negócio
-
-O modelo de negócio proposto inicialmente é o freemium.
-
-## Plano gratuito
-
-Voltado para estudantes e professores, oferecendo as funcionalidades essenciais:
-
-- Disciplinas;
-- Calendário;
-- Atividades;
-- Tarefas;
-- Notificações;
-- Comunicação básica.
-- Plano Premium
-
-Poderá oferecer recursos avançados, como:
-
-- Estatísticas acadêmicas;
-- Relatórios;
-- Sincronização com outros calendários;
-- Organização avançada;
-- Histórico ampliado;
-- Recursos inteligentes para planejamento de estudos.
-- Plano institucional
-
-Em uma etapa posterior, instituições de ensino poderão contratar uma versão voltada para suas necessidades, incluindo:
-
-- Gestão de usuários;
-- Gestão de turmas;
-- Painel administrativo;
-- Relatórios;
-- Integração com sistemas acadêmicos;
-- Integração com ambientes virtuais de aprendizagem;
-- Suporte institucional.
-
-A estratégia de crescimento seria:
-
-**Estudantes → Professores → Instituições**
-
-# 🎨 Identidade visual
-
-O projeto utilizará inicialmente a seguinte paleta de cores:
-
-| Cor                   | Hexadecimal | Aplicação                    |
-|-----------------------|-------------|------------------------------|
-| Foreground / Primária | #9381FF     | Ações e elementos principais |
-| Background            | #2C2C29     | Fundo principal              |
-| Surface               | #EEEBFF     | Cards e superfícies          |
-| Accent                | #E34A6F     | Destaques e notificações     |
-| Dark Accent           | #580E20     | Elementos de contraste       |
-
-A identidade visual busca transmitir uma aparência moderna, tecnológica, acessível e jovem, evitando a aparência tradicional de sistemas acadêmicos.
-
-# 🛠️ Tecnologias
-
-O projeto será desenvolvido inicialmente utilizando Flutter e Dart.
-
-A arquitetura será organizada de forma modular para permitir a evolução do MVP e a posterior integração com um backend e banco de dados.
-
-```
-📂 Estrutura inicial
-Academya/
-├── assets/
-│   ├── images/
-│   ├── icons/
-│   └── fonts/
-│
-├── lib/
-│   ├── main.dart
-│   │
-│   ├── app/
-│   │   ├── app.dart
-│   │   ├── routes.dart
-│   │   └── theme.dart
-│   │
-│   ├── core/
-│   │   ├── constants/
-│   │   ├── errors/
-│   │   ├── utils/
-│   │   └── widgets/
-│   │
-│   ├── features/
-│   │   ├── authentication/
-│   │   ├── dashboard/
-│   │   ├── calendar/
-│   │   ├── activities/
-│   │   ├── subjects/
-│   │   └── communication/
-│   │
-│   └── shared/
-│       ├── models/
-│       └── widgets/
-│
-├── test/
-├── pubspec.yaml
-└── README.md
+```text
+lib/
+  app/
+    app.dart
+    routes.dart
+    theme.dart
+  core/
+    firebase/
+      firebase_options.dart
+      firebase_sync_service.dart
+  data/
+    models/
+    repositories/
+  features/
+    authentication/
+    classes/
+    publications/
+  shared/
+    widgets/
 ```
 
-# 🎯 Objetivo do MVP
+## Como rodar
 
-O primeiro objetivo do projeto é validar a proposta de centralizar a organização acadêmica em um único aplicativo.
+1. Instale as dependencias:
 
-O MVP deverá permitir que um estudante:
+```bash
+flutter pub get
+```
 
-- Cadastre suas disciplinas;
-- Visualize seu calendário;
-- Cadastre provas, trabalhos e tarefas;
-- Acompanhe suas próximas atividades;
-- Receba comunicados relacionados à sua vida acadêmica.
+2. Rode em uma das plataformas versionadas (Android, Windows ou web):
 
-Ao mesmo tempo, professores deverão conseguir cadastrar atividades e enviar comunicados para suas respectivas turmas.
+```bash
+flutter run -d windows
+```
 
-É possível acessar um protótipo realizado no Figma [aqui](https://www.figma.com/design/GhM1IwJbUVkymfnQ3AStZy/cp1_flutter--Copy-?node-id=0-1&t=mCNPpgEFniuZltU6-1).
+Para abrir no navegador ou no emulador Android:
+
+```bash
+flutter run -d edge
+flutter emulators --launch Pixel_9a
+flutter run -d emulator-5554
+```
+
+3. Habilite **E-mail/senha** em Authentication no Console Firebase, publique `firestore.rules` e crie sua conta pela tela **Criar conta**. O passo a passo esta em [docs/FIREBASE.md](docs/FIREBASE.md).
+
+Nao existem contas de demonstracao no app executado. Os dados ficticios ficam apenas em `test/support`, injetados nos testes. Uma conta nova comeca sem turmas; crie uma turma e compartilhe o codigo gerado.
+
+## Firebase
+
+O `FirebaseAuthenticationService` usa Firebase Auth para cadastro, login, nome do usuario, restauracao da sessao e recuperacao de senha. O modelo `AppUser` nao contem senha. O `FirebaseSyncService` persiste o perfil por UID e grava somente a turma ou publicacao alterada.
+
+Sem Firebase disponivel, o app informa erro e nao libera login mockado. Falhas do Firestore aparecem na tela de turmas com opcao de tentar novamente; uma falha ao salvar o perfil nao apaga a conta ja criada em Authentication. As regras versionadas protegem perfis por UID e publicacoes por membro/criador. Os metadados das turmas sao consultaveis por usuarios autenticados para a busca por codigo.
+
+A configuracao gerada pelo FlutterFire esta em `lib/firebase_options.dart`, para o projeto `academya-fiap-4547a`, com aplicativos Android, web e Windows. O adaptador em `lib/core/firebase/firebase_options.dart` usa esse arquivo automaticamente. Os identificadores publicos do aplicativo nao substituem regras de seguranca do Firestore.
+
+### Opcao 1: FlutterFire CLI
+
+```bash
+dart pub global activate flutterfire_cli
+flutterfire configure
+```
+
+O arquivo gerado em `lib/firebase_options.dart` ja e utilizado pelo app; nao e necessario substituir arquivos nem passar `--dart-define`. Apos reconfigurar, encerre a execucao anterior e rode novamente o aplicativo. O guia para habilitar os servicos no console e comprovar gravacao esta em [docs/FIREBASE.md](docs/FIREBASE.md).
+
+### Opcao 2: dart-define
+
+```bash
+flutter run \
+  --dart-define=FIREBASE_API_KEY=sua_api_key \
+  --dart-define=FIREBASE_APP_ID=seu_app_id \
+  --dart-define=FIREBASE_MESSAGING_SENDER_ID=seu_sender_id \
+  --dart-define=FIREBASE_PROJECT_ID=seu_project_id \
+  --dart-define=FIREBASE_AUTH_DOMAIN=seu_project.firebaseapp.com \
+  --dart-define=FIREBASE_STORAGE_BUCKET=seu_project.appspot.com
+```
+
+Os valores de `--dart-define` sao uma substituicao opcional da configuracao gerada. Habilite **E-mail/senha** e publique as regras no projeto utilizado. Login anonimo nao e mais usado. O app consulta dados ao entrar/reabrir e ao atualizar a lista; ainda nao ha listeners de publicacoes em tempo real.
+
+## Decisoes tecnicas
+
+- O app separa telas por feature para facilitar manutencao e crescimento.
+- O repositorio coordena a sessao real e o estado das turmas/publicacoes do usuario.
+- Firebase Auth e Firestore ficam isolados em servicos para permitir testes sem acessar contas reais.
+- A criacao de publicacoes verifica permissao pela autoria da turma.
+- O app restaura a sessao persistida pelo SDK e inicia no login quando nao ha uma conta real autenticada.
+- As cores dos componentes derivam do `ColorScheme` de cada tema, preservando contraste.
+- Nomes de turmas e metadados usam quebra de linha; as listas reservam espaco rolavel para o botao flutuante.
+- Os formularios mantem todos os campos montados durante a rolagem para preservar validacao.
+- Os modais limitam a altura disponivel acima do teclado e rolam em telas baixas.
+
+## Instalar no celular
+
+O passo a passo de instalacao por APK e por cabo USB esta em [docs/INSTALACAO.md](docs/INSTALACAO.md).
+
+O APK universal e gerado em `build/app/outputs/flutter-apk/app-release.apk`:
+
+```powershell
+flutter build apk --release
+```
+
+O nome exibido no Android e **Academya**. O APK usa a chave de debug local para assinatura, inclusive no modo release; publicar na Play Store requer configurar uma chave de release propria.
+
+## Testes
+
+```bash
+flutter test
+flutter analyze
+```
+
+Os testes cobrem login, cadastro invalido, criacao de grupo, formulario de publicacao, limites de 50/900 caracteres, selecao de tipo, expansao de conteudo e logout. Os fluxos rodam nos temas claro/escuro em 320x568, 360x800, 430x932, 800x360, 320x640 com fonte 2x, 768x1024 e 1280x800, incluindo teclado aberto. Tambem verificam troca de tema sem perder navegacao e restauracao da preferencia salva.
+
+Os testes de autenticacao verificam UID real, tratamento dos erros do SDK, cadastro, recuperacao de senha, restauracao da sessao, prevencao de envio duplicado e troca de conta sem expor dados anteriores. Os emuladores locais de Auth/Firestore validam cadastro/login e as regras contra acesso indevido. Instrucoes de execucao em [docs/FIREBASE.md](docs/FIREBASE.md). Testes locais nao comprovam a habilitacao dos servicos no projeto real.
+
+Capturas reais do emulador: [login claro](docs/previews/android-login.png), [turmas claras](docs/previews/android-light.png), [turmas escuras](docs/previews/android-dark.png) e [login escuro apos reiniciar](docs/previews/android-login-dark.png).
