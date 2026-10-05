@@ -4,7 +4,7 @@ import '../../app/theme.dart';
 
 enum PublicationType {
   notice('Aviso', AppColors.foreground),
-  material('Material didatico', AppColors.success),
+  material('Material didático', AppColors.success),
   activity('Atividade', AppColors.accent),
   exam('Prova', AppColors.warning);
 
@@ -57,7 +57,7 @@ class Publication {
     return Publication(
       id: json['id'] as String? ?? '',
       classId: json['classId'] as String? ?? '',
-      title: json['title'] as String? ?? 'Publicacao sem titulo',
+      title: json['title'] as String? ?? 'publicação sem título',
       description: json['description'] as String? ?? '',
       type: PublicationType.values.firstWhere(
         (type) => type.name == json['type'],

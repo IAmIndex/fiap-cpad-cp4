@@ -126,13 +126,13 @@ void main() {
     'invalid-credential': 'E-mail ou senha invalidos.',
     'wrong-password': 'E-mail ou senha invalidos.',
     'user-not-found': 'E-mail ou senha invalidos.',
-    'email-already-in-use': 'Este e-mail ja esta cadastrado.',
+    'email-already-in-use': 'Este e-mail já está cadastrado.',
     'operation-not-allowed':
         'Habilite E-mail/senha em Authentication no Console Firebase.',
     'network-request-failed':
         'Sem conexao. Confira sua internet e tente novamente.',
     'too-many-requests': 'Muitas tentativas. Aguarde e tente novamente.',
-    'weak-password': 'A senha nao atende aos requisitos do Firebase.',
+    'weak-password': 'A senha não atende aos requisitos do Firebase.',
   };
   for (final failure in failures.entries) {
     test('Firebase error ${failure.key} becomes a readable message', () async {

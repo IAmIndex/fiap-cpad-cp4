@@ -221,22 +221,22 @@ class AcademyaRepository extends ChangeNotifier {
 
   AppUser _requireUser() =>
       _currentUser ??
-      (throw StateError('Usuario autenticado necessario para essa acao.'));
+      (throw StateError('Usuário autenticado necessário para essa acao.'));
 
   void _checkSession(String userId) {
     if (_disposed || _currentUser?.id != userId) {
-      throw StateError('Sessao encerrada. Entre novamente.');
+      throw StateError('Sessão encerrada. Entre novamente.');
     }
   }
 
   static String describeDataError(Object error) {
     if (error is FirebaseException && error.code == 'permission-denied') {
-      return 'Sem permissao no Firestore. Confira as regras do projeto.';
+      return 'Sem permissão no Firestore. Confira as regras do projeto.';
     }
     if (error is TimeoutException) {
-      return 'O Firebase nao confirmou a operacao a tempo. Confira a conexao e atualize a lista antes de tentar novamente.';
+      return 'O Firebase não confirmou a operacao a tempo. Confira a conexao e atualize a lista antes de tentar novamente.';
     }
-    return 'Nao foi possivel acessar os dados. Confira sua conexao e tente novamente.';
+    return 'Não foi possível acessar os dados. Confira sua conexao e tente novamente.';
   }
 
   String _createId(String prefix) =>

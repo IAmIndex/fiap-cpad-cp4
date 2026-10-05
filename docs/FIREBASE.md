@@ -1,19 +1,19 @@
 # Login e cadastro reais no Firebase
 
-O app utiliza automaticamente `lib/firebase_options.dart`, gerado para `academya-fiap-4547a`. Agora o login e o cadastro usam Firebase Authentication, sem usuarios ficticios ou autenticacao anonima.
+O app utiliza automaticamente `lib/firebase_options.dart`, gerado para `academya-fiap-4547a`. Agora o login e o cadastro usam Firebase Authentication, sem usuários ficticios ou autenticação anonima.
 
 ## 1. Habilitar e-mail/senha
 
 1. Abra o [Console do projeto](https://console.firebase.google.com/project/academya-fiap-4547a/overview).
 2. Acesse **Authentication > Metodo de login** (ou **Sign-in method**).
-3. Adicione/habilite **E-mail/senha** e salve. Nao e necessario habilitar link de e-mail sem senha.
-4. O provedor **Anonimo** nao e mais necessario para este app. Sessoes anonimas antigas nao liberam acesso as telas de turmas.
+3. Adicione/habilite **E-mail/senha** e salve. Não e necessário habilitar link de e-mail sem senha.
+4. O provedor **Anonimo** não e mais necessário para este app. Sessoes anonimas antigas não liberam acesso as telas de turmas.
 
-Nao e necessario criar usuarios manualmente no Console nem baixar uma chave de administrador. As contas serao criadas pela tela **Criar conta**. Nunca coloque um JSON de service account ou chave privada dentro do aplicativo.
+Não é necessário criar usuários manualmente no Console nem baixar uma chave de administrador. As contas serao criadas pela tela **Criar conta**. Nunca coloque um JSON de service account ou chave privada dentro do aplicativo.
 
 ## 2. Criar o banco e publicar as regras
 
-Se ainda nao existir, crie o Cloud Firestore **(default)** na edicao **Standard**, escolha a regiao e mantenha o plano Spark.
+Se ainda não existir, crie o Cloud Firestore **(default)** na edição **Standard**, escolha a região e mantenha o plano Spark.
 
 Substitua as regras antigas por todo o conteudo de [firestore.rules](../firestore.rules) em **Firestore Database > Regras** e clique em **Publicar**.
 
@@ -23,19 +23,19 @@ Alternativamente, na pasta do projeto, com a CLI autenticada na sua conta:
 firebase deploy --only firestore:rules --project academya-fiap-4547a
 ```
 
-Esse comando publica somente as regras, nao altera o provedor de login. O arquivo `firebase.json` ja aponta para as regras versionadas. A publicacao altera as permissoes do banco: revise antes se outros aplicativos tambem utilizam este projeto. A configuracao do Console e a publicacao em producao nao foram executadas automaticamente.
+Esse comando publica somente as regras, não altera o provedor de login. O arquivo `firebase.json` já aponta para as regras versionadas. A publicação altera as permissões do banco: revise antes se outros aplicativos tambem utilizam este projeto. A configuração do Console e a publicação em produção não foram executadas automaticamente.
 
 As regras permitem:
 
-- Perfil em `users/{uid}`: somente o proprio usuario pode ler/gravar; campos de senha sao proibidos.
+- Perfil em `users/{uid}`: somente o próprio usuário pode ler/gravar; campos de senha são proibidos.
 - Turma nova: criador e primeiro membro precisam ser o UID autenticado.
-- Entrada em turma: o usuario pode acrescentar somente seu proprio UID, sem remover outros membros nem trocar o criador.
-- Publicacao: somente o criador publica; somente membros leem.
+- Entrada em turma: o usuário pode acrescentar somente seu próprio UID, sem remover outros membros nem trocar o criador.
+- publicação: somente o criador publica; somente membros leem.
 - Sessoes anonimas e acessos sem login: bloqueados.
 
-Os metadados de turmas (incluindo codigo e UIDs dos membros) podem ser consultados por qualquer usuario autenticado para permitir a busca por codigo. O codigo nao e uma barreira de privacidade para esses metadados. Para turmas privadas, essa descoberta/entrada deve ser movida para um fluxo de convites validado no servidor. Perfis e conteudo das publicacoes nao ficam publicos.
+Os metadados de turmas (incluindo código e UIDs dos membros) podem ser consultados por qualquer usuário autenticado para permitir a busca por código. O código não e uma barreira de privacidade para esses metadados. Para turmas privadas, essa descoberta/entrada deve ser movida para um fluxo de convites validado no servidor. Perfis e conteudo das publicações não ficam publicos.
 
-Os documentos antigos de demonstracao nao sao apagados nem atribuidos automaticamente a novas contas. Crie novas turmas com sua conta real; documentos cujo criador era `user-student` ou `user-teacher` nao representam seu UID Firebase.
+Os documentos antigos de demonstracao não são apagados nem atribuidos automaticamente a novas contas. Crie novas turmas com sua conta real; documentos cujo criador era `user-student` ou `user-teacher` não representam seu UID Firebase.
 
 ## 3. Rodar e criar a conta
 
@@ -57,28 +57,28 @@ flutter run -d ID_DO_DISPOSITIVO
 2. Preencha nome completo e um e-mail seu.
 3. Escolha uma senha de pelo menos 6 caracteres, com letras e numeros. Uma politica mais restritiva configurada no Firebase tambem sera aplicada pelo servidor.
 4. Toque em **Cadastrar**. O cadastro autentica a conta e abre as turmas.
-5. Uma conta nova comeca sem turmas. Crie uma turma e compartilhe seu codigo com outra conta.
+5. Uma conta nova comeca sem turmas. Crie uma turma e compartilhe seu código com outra conta.
 
-As antigas credenciais de demonstracao nao funcionam, a menos que uma conta com esse e-mail tenha sido realmente criada em Authentication.
+As antigas credenciais de demonstracao não funcionam, a menos que uma conta com esse e-mail tenha sido realmente criada em Authentication.
 
 ## 4. Comprovar a persistencia real
 
-1. Em **Authentication > Usuarios**, localize o e-mail cadastrado e anote o **UID**. O provedor deve ser e-mail/senha, nao anonimo.
+1. Em **Authentication > Usuários**, localize o e-mail cadastrado e anote o **UID**. O provedor deve ser e-mail/senha, não anonimo.
 2. Em **Firestore > Dados > users**, localize um documento com esse mesmo UID. Ele contem `fullName`, `email` e `updatedAt`, nunca a senha.
 3. Crie uma turma. Em `classes`, confira `creatorId` e `memberIds` usando o UID real.
-4. Crie uma publicacao. Ela deve aparecer em `classes/{classId}/publications`.
-5. Encerre completamente o processo do app e reabra. A sessao deve ser restaurada sem preencher a senha, e as turmas devem ser consultadas do servidor.
+4. Crie uma publicação. Ela deve aparecer em `classes/{classId}/publications`.
+5. Encerre completamente o processo do app e reabra. A sessão deve ser restaurada sem preencher a senha, e as turmas devem ser consultadas do servidor.
 6. Toque em **Sair** e entre novamente com o mesmo e-mail/senha. Teste tambem uma senha incorreta: o acesso deve ser negado.
 7. Em outro dispositivo, entre na mesma conta. Os dados da conta devem aparecer.
-8. Para testar duas contas, crie uma segunda conta e entre pelo codigo da turma. Ela pode ler publicacoes, mas nao publicar na turma criada pela primeira.
+8. Para testar duas contas, crie uma segunda conta e entre pelo código da turma. Ela pode ler publicações, mas não publicar na turma criada pela primeira.
 
-A identidade fica no Firebase Authentication. O SDK administra a senha; o aplicativo nao salva senha em Firestore, Shared Preferences ou no modelo do usuario.
+A identidade fica no Firebase Authentication. O SDK administra a senha; o aplicativo não salva senha em Firestore, Shared Preferences ou no modelo do usuário.
 
-Se a conta aparecer em Authentication, mas faltar `users/{uid}`, o cadastro de identidade funcionou e a gravacao do perfil falhou. Corrija as regras/banco e toque em **Tentar novamente** ou **Atualizar turmas**. Nao refaca o cadastro: o e-mail ja estara registrado.
+Se a conta aparecer em Authentication, mas faltar `users/{uid}`, o cadastro de identidade funcionou e a gravacao do perfil falhou. Corrija as regras/banco e toque em **Tentar novamente** ou **Atualizar turmas**. Não refaca o cadastro: o e-mail já estara registrado.
 
 ## Recuperar senha
 
-Na tela de login, preencha o e-mail e toque em **Esqueci minha senha**. Confira a caixa de entrada e o spam. A mensagem do app e neutra para nao revelar se o e-mail pertence a uma conta. Os modelos de e-mail podem ser ajustados em **Authentication > Modelos/Templates**.
+Na tela de login, preencha o e-mail e toque em **Esqueci minha senha**. Confira a caixa de entrada e o spam. A mensagem do app e neutra para não revelar se o e-mail pertence a uma conta. Os modelos de e-mail podem ser ajustados em **Authentication > Modelos/Templates**.
 
 ## Atualizar o APK
 
@@ -87,11 +87,11 @@ flutter build apk --release
 flutter install -d ID_DO_DISPOSITIVO --release
 ```
 
-O arquivo atualizado fica em `build/app/outputs/flutter-apk/app-release.apk`. O APK anterior nao recebe estas mudancas automaticamente.
+O arquivo atualizado fica em `build/app/outputs/flutter-apk/app-release.apk`. O APK anterior não recebe estas mudanças automaticamente.
 
 ## Tempo real
 
-A sessao de autenticacao e acompanhada por `userChanges()`. As turmas e publicacoes sao consultadas ao entrar/reabrir ou atualizar a lista. As gravacoes agora sao pontuais, mas ainda nao ha listeners `snapshots()` para publicacoes: nao espere uma nova publicacao em outro celular sem atualizar a lista ou entrar novamente.
+A sessão de autenticação e acompanhada por `userChanges()`. As turmas e publicações são consultadas ao entrar/reabrir ou atualizar a lista. As gravações agora são pontuais, mas ainda não ha listeners `snapshots()` para publicações: não espere uma nova publicação em outro celular sem atualizar a lista ou entrar novamente.
 
 ## Testes locais
 
@@ -113,11 +113,11 @@ $env:JAVA_HOME = 'C:\Program Files\Android\Android Studio\jbr'
 $env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
 ```
 
-O teste exige hosts locais e o projeto `demo-academya`; nao cria usuarios nem documentos em producao. Foram aprovados 49 testes Flutter e 26 verificacoes nos emuladores. Esses testes nao comprovam que voce habilitou E-mail/senha ou publicou as regras no Console real.
+O teste exige hosts locais e o projeto `demo-academya`; não cria usuários nem documentos em produção. Foram aprovados 49 testes Flutter e 26 verificacoes nos emuladores. Esses testes não comprovam que voce habilitou E-mail/senha ou publicou as regras no Console real.
 
 ## Referencias
 
-- [Autenticacao e-mail/senha no Flutter](https://firebase.google.com/docs/auth/flutter/password-auth).
-- [Persistencia e eventos da sessao](https://firebase.google.com/docs/auth/flutter/start).
-- [Perfil e recuperacao de senha](https://firebase.google.com/docs/auth/flutter/manage-users).
+- [Autenticação e-mail/senha no Flutter](https://firebase.google.com/docs/auth/flutter/password-auth).
+- [Persistencia e eventos da sessão](https://firebase.google.com/docs/auth/flutter/start).
+- [Perfil e recuperação de senha](https://firebase.google.com/docs/auth/flutter/manage-users).
 - [Regras do Firestore](https://firebase.google.com/docs/firestore/security/get-started).

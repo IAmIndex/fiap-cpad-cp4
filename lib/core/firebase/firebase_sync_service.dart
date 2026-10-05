@@ -32,14 +32,14 @@ class FirebaseConnectionStatus {
   factory FirebaseConnectionStatus.notConfigured() {
     return const FirebaseConnectionStatus._(
       isConnected: false,
-      message: 'Firebase aguardando configuracao',
+      message: 'Firebase aguardando configuração',
     );
   }
 
   factory FirebaseConnectionStatus.failed(Object error) {
     return FirebaseConnectionStatus._(
       isConnected: false,
-      message: 'Firebase indisponivel: $error',
+      message: 'Firebase indisponível: $error',
     );
   }
 }
@@ -49,7 +49,7 @@ class FirebaseSyncService {
   static const _timeout = Duration(seconds: 15);
 
   FirebaseFirestore get _database =>
-      _firestore ?? (throw StateError('Firebase nao inicializado.'));
+      _firestore ?? (throw StateError('Firebase não inicializado.'));
 
   Future<FirebaseConnectionStatus> initialize() async {
     if (!DefaultFirebaseOptions.isConfigured) {

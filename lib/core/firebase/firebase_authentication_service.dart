@@ -11,7 +11,7 @@ class FirebaseAuthenticationService implements AuthenticationService {
   FirebaseAuth get _availableAuth =>
       auth ??
       (throw const AuthenticationFailure(
-        'Firebase indisponivel. Confira a configuracao e reinicie o app.',
+        'Firebase indisponível. Confira a configuração e reinicie o app.',
       ));
 
   @override
@@ -22,7 +22,7 @@ class FirebaseAuthenticationService implements AuthenticationService {
     if (user == null || user.isAnonymous) return null;
     return AppUser(
       id: user.uid,
-      fullName: user.displayName ?? user.email?.split('@').first ?? 'Usuario',
+      fullName: user.displayName ?? user.email?.split('@').first ?? 'Usuário',
       email: user.email ?? '',
     );
   }
@@ -64,7 +64,7 @@ class FirebaseAuthenticationService implements AuthenticationService {
     } on FirebaseAuthException {
       await _availableAuth.signOut();
       throw const AuthenticationFailure(
-        'Sua conta foi criada, mas o nome nao foi salvo. Entre com o e-mail e a senha cadastrados.',
+        'Sua conta foi criada, mas o nome não foi salvo. Entre com o e-mail e a senha cadastrados.',
       );
     }
     return AppUser(
@@ -100,16 +100,16 @@ class FirebaseAuthenticationService implements AuthenticationService {
       'invalid-credential' ||
       'wrong-password' ||
       'user-not-found' => 'E-mail ou senha invalidos.',
-      'email-already-in-use' => 'Este e-mail ja esta cadastrado.',
+      'email-already-in-use' => 'Este e-mail já está cadastrado.',
       'invalid-email' => 'Informe um e-mail valido.',
-      'weak-password' => 'A senha nao atende aos requisitos do Firebase.',
+      'weak-password' => 'A senha não atende aos requisitos do Firebase.',
       'operation-not-allowed' =>
         'Habilite E-mail/senha em Authentication no Console Firebase.',
       'network-request-failed' =>
         'Sem conexao. Confira sua internet e tente novamente.',
       'too-many-requests' => 'Muitas tentativas. Aguarde e tente novamente.',
       'user-disabled' => 'Esta conta foi desativada.',
-      _ => 'Nao foi possivel autenticar. Tente novamente.',
+      _ => 'Não foi possível autenticar. Tente novamente.',
     };
     return AuthenticationFailure(message);
   }

@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#F7F7FA",
     "theme_color": "#9381FF",
-    "description": "Turmas, grupos de estudo e publicacoes.",
+    "description": "Turmas, grupos de estudo e publicações.",
     "orientation": "any",
     "prefer_related_applications": false,
     "icons": [

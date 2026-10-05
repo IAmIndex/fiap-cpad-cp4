@@ -145,7 +145,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
           final joined = await repository.joinClassByCode(code);
           final message = joined
               ? 'Turma adicionada.'
-              : 'Codigo de turma nao encontrado.';
+              : 'Código de turma não encontrado.';
 
           if (!context.mounted) return joined;
           ScaffoldMessenger.of(context)
@@ -179,7 +179,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
       if (mounted) _showFirebaseStatus(context, error.message);
     } catch (_) {
       if (mounted) {
-        _showFirebaseStatus(context, 'Nao foi possivel sair. Tente novamente.');
+        _showFirebaseStatus(context, 'Não foi possível sair. Tente novamente.');
       }
     } finally {
       if (mounted) setState(() => _signingOut = false);

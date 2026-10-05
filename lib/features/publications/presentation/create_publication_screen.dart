@@ -38,7 +38,7 @@ class _CreatePublicationScreenState extends State<CreatePublicationScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Nova publicacao',
+          'Nova publicação',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -59,13 +59,13 @@ class _CreatePublicationScreenState extends State<CreatePublicationScreen> {
                   maxLength: 50,
                   textCapitalization: TextCapitalization.sentences,
                   decoration: const InputDecoration(
-                    labelText: 'Titulo da publicacao',
+                    labelText: 'Título da publicação',
                     prefixIcon: Icon(Icons.title_rounded),
                     counterText: '',
                   ),
                   validator: (value) {
                     if ((value ?? '').trim().isEmpty) {
-                      return 'Informe o titulo.';
+                      return 'Informe o título.';
                     }
 
                     return null;
@@ -75,7 +75,7 @@ class _CreatePublicationScreenState extends State<CreatePublicationScreen> {
                 FormField<String>(
                   initialValue: '',
                   validator: (value) => (value ?? '').trim().isEmpty
-                      ? 'Informe a descricao.'
+                      ? 'Informe a descrição.'
                       : null,
                   builder: (field) => Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -90,7 +90,7 @@ class _CreatePublicationScreenState extends State<CreatePublicationScreen> {
                             minLines: 5,
                             textCapitalization: TextCapitalization.sentences,
                             decoration: const InputDecoration(
-                              labelText: 'Descricao da publicacao',
+                              labelText: 'Descrição da publicação',
                               alignLabelWithHint: true,
                               counterText: '',
                               contentPadding: EdgeInsets.fromLTRB(
@@ -141,7 +141,7 @@ class _CreatePublicationScreenState extends State<CreatePublicationScreen> {
                   isExpanded: true,
                   itemHeight: null,
                   decoration: const InputDecoration(
-                    labelText: 'Tipo da publicacao',
+                    labelText: 'Tipo da publicação',
                     prefixIcon: Icon(Icons.category_outlined),
                   ),
                   items: PublicationType.creationOptions.map((type) {

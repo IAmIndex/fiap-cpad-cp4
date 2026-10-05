@@ -84,12 +84,12 @@ class _JoinClassSheetState extends State<JoinClassSheet> {
             textInputAction: TextInputAction.done,
             onFieldSubmitted: (_) => _joinClass(),
             decoration: const InputDecoration(
-              labelText: 'Codigo da turma',
+              labelText: 'Código da turma',
               prefixIcon: Icon(Icons.qr_code_2_rounded),
             ),
             validator: (value) {
               if ((value ?? '').trim().isEmpty) {
-                return 'Informe o codigo.';
+                return 'Informe o código.';
               }
 
               return null;
@@ -184,7 +184,7 @@ class _JoinClassSheetState extends State<JoinClassSheet> {
                     _isCreating = false;
                     _error = null;
                   }),
-            child: const Text('Usar codigo'),
+            child: const Text('Usar código'),
           ),
         ],
       ),

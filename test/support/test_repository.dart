@@ -59,7 +59,7 @@ class MemoryAuthenticationService implements AuthenticationService {
   }) async {
     final normalized = email.trim().toLowerCase();
     if (accounts.containsKey(normalized)) {
-      throw const AuthenticationFailure('Este e-mail ja esta cadastrado.');
+      throw const AuthenticationFailure('Este e-mail já está cadastrado.');
     }
     final user = AppUser(
       id: 'new-${accounts.length}',

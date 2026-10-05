@@ -69,7 +69,7 @@ void main() {
           );
           await tester.pumpAndSettle();
           await _tapVisible(tester, find.text('Participar'));
-          expect(find.text('Informe o codigo.'), findsOneWidget);
+          expect(find.text('Informe o código.'), findsOneWidget);
           await _tapVisible(tester, find.text('Criar turma'));
           await tester.enterText(
             find.byType(TextFormField),
@@ -91,25 +91,25 @@ void main() {
           expect(tester.takeException(), isNull);
 
           await _tapVisible(tester, find.text(schoolClass.name));
-          expect(find.byTooltip('Nova publicacao'), findsOneWidget);
-          await tester.tap(find.byTooltip('Nova publicacao'));
+          expect(find.byTooltip('Nova publicação'), findsOneWidget);
+          await tester.tap(find.byTooltip('Nova publicação'));
           await tester.pumpAndSettle();
           tester.view.viewInsets = FakeViewPadding(
             bottom: layout.size.height < 500 ? 140 : 260,
           );
           await tester.pumpAndSettle();
           await _tapVisible(tester, find.text('Publicar'));
-          await _showVisible(tester, find.text('Informe o titulo.'));
-          expect(find.text('Informe o titulo.'), findsOneWidget);
-          await _showVisible(tester, find.text('Informe a descricao.'));
-          expect(find.text('Informe a descricao.'), findsOneWidget);
+          await _showVisible(tester, find.text('Informe o título.'));
+          expect(find.text('Informe o título.'), findsOneWidget);
+          await _showVisible(tester, find.text('Informe a descrição.'));
+          expect(find.text('Informe a descrição.'), findsOneWidget);
           final titleFinder = find.widgetWithText(
             TextFormField,
-            'Titulo da publicacao',
+            'Título da publicação',
           );
           final descriptionFinder = find.widgetWithText(
             TextField,
-            'Descricao da publicacao',
+            'Descrição da publicação',
           );
           await _showVisible(tester, titleFinder);
           await tester.enterText(titleFinder, List.filled(70, 'a').join());
@@ -126,7 +126,7 @@ void main() {
           await _showVisible(tester, descriptionFinder);
           await tester.enterText(
             descriptionFinder,
-            List.filled(30, 'Conteudo completo da publicacao. ').join(),
+            List.filled(30, 'Conteudo completo da publicação. ').join(),
           );
           await tester.pumpAndSettle();
           final descriptionField = tester.widget<TextField>(descriptionFinder);
@@ -136,7 +136,7 @@ void main() {
             tester,
             find.byType(DropdownButtonFormField<PublicationType>),
           );
-          await _tapVisible(tester, find.text('Material didatico').last);
+          await _tapVisible(tester, find.text('Material didático').last);
           expect(tester.takeException(), isNull);
           await _tapVisible(tester, find.text('Publicar'));
           tester.view.resetViewInsets();
@@ -201,7 +201,7 @@ void main() {
         tester,
         find.text('Cross-Platform Application Development'),
       );
-      expect(find.byTooltip('Nova publicacao'), findsNothing);
+      expect(find.byTooltip('Nova publicação'), findsNothing);
       expect(tester.takeException(), isNull);
     },
   );
@@ -229,7 +229,7 @@ void main() {
       );
       await _fillLogin(tester);
       await _tapVisible(tester, find.text('Entrar'));
-      await tester.tap(find.byTooltip('Aparencia'));
+      await tester.tap(find.byTooltip('Aparência'));
       await tester.pumpAndSettle();
       await tester.tap(
         find.widgetWithText(CheckedPopupMenuItem<ThemeMode>, 'Modo claro'),
@@ -241,7 +241,7 @@ void main() {
         Brightness.light,
       );
       expect(repository.isAuthenticated, isTrue);
-      await tester.tap(find.byTooltip('Aparencia'));
+      await tester.tap(find.byTooltip('Aparência'));
       await tester.pumpAndSettle();
       await tester.tap(
         find.widgetWithText(CheckedPopupMenuItem<ThemeMode>, 'Modo escuro'),

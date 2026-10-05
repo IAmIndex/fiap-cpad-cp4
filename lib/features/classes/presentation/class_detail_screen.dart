@@ -23,7 +23,7 @@ class ClassDetailScreen extends StatelessWidget {
         appBar: AppBar(title: const Text('Turma')),
         body: const EmptyState(
           icon: Icons.search_off_rounded,
-          title: 'Turma nao encontrada',
+          title: 'Turma não encontrada',
           message: 'Volte para a lista e tente novamente.',
         ),
       );
@@ -34,7 +34,7 @@ class ClassDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Publicacoes',
+          'Publicações',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -68,7 +68,7 @@ class ClassDetailScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      SelectableText('Codigo: ${schoolClass.joinCode}'),
+                      SelectableText('Código: ${schoolClass.joinCode}'),
                       const SizedBox(height: 8),
                     ],
                   );
@@ -76,7 +76,7 @@ class ClassDetailScreen extends StatelessWidget {
                 if (publications.isEmpty) {
                   return const Padding(
                     padding: EdgeInsets.symmetric(vertical: 24),
-                    child: Text('Sem publicacoes'),
+                    child: Text('Sem publicações'),
                   );
                 }
                 return PublicationCard(publication: publications[index - 1]);
@@ -92,7 +92,7 @@ class ClassDetailScreen extends StatelessWidget {
                 AppRoutes.createPublication,
                 arguments: classId,
               ),
-              tooltip: 'Nova publicacao',
+              tooltip: 'Nova publicação',
               child: const Icon(Icons.edit_note_rounded),
             )
           : null,

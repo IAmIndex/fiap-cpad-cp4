@@ -14,14 +14,14 @@ Aplicativo Flutter para comunicacao entre professores e alunos em instituicoes e
 
 - Login e cadastro reais com Firebase Authentication (e-mail/senha).
 - Cadastro com nome completo e senha de pelo menos 6 caracteres, incluindo letras e numeros.
-- Restauracao da sessao, logout real e recuperacao de senha por e-mail.
-- Lista rolavel de turmas do usuario, com nome, criador, tipo e codigo.
-- Modal no botao `+` para entrar por codigo ou criar turma/grupo de estudos.
-- Tela da turma com publicacoes persistidas no Firestore e faixa colorida por tipo.
-- Modal de expansao para visualizar o conteudo completo da publicacao.
-- Criacao de publicacao visivel somente para o criador da turma.
-- Formulario de publicacao com titulo ate 50 caracteres, descricao ate 900 caracteres, contador e tipo.
-- Perfis em `users/{uid}`, turmas e publicacoes com gravacoes pontuais no Firestore.
+- Restauracao da sessão, logout real e recuperação de senha por e-mail.
+- Lista rolavel de turmas do usuário, com nome, criador, tipo e código.
+- Modal no botao `+` para entrar por código ou criar turma/grupo de estudos.
+- Tela da turma com publicações persistidas no Firestore e faixa colorida por tipo.
+- Modal de expansão para visualizar o conteudo completo da publicação.
+- Criacao de publicação visivel somente para o criador da turma.
+- Formulario de publicação com título ate 50 caracteres, descrição ate 900 caracteres, contador e tipo.
+- Perfis em `users/{uid}`, turmas e publicações com gravações pontuais no Firestore.
 - Layouts adaptados para celular, tablet, desktop e orientacao horizontal.
 - Formularios e modais rolaveis com teclado aberto e suporte a fontes ampliadas.
 - Modo claro, modo escuro e opcao de seguir o sistema, com preferencia salva no aparelho.
@@ -43,7 +43,7 @@ Aplicativo Flutter para comunicacao entre professores e alunos em instituicoes e
 - Firebase Core, Firebase Auth e Cloud Firestore.
 - Estado local com `ChangeNotifier` e `InheritedNotifier`, sem pacote externo de state management.
 - Navegacao pela API nativa do Flutter com rotas nomeadas.
-- Shared Preferences para persistir a preferencia de aparencia.
+- Shared Preferences para persistir a preferencia de aparência.
 
 ## Estrutura de pastas
 
@@ -90,17 +90,17 @@ flutter emulators --launch Pixel_9a
 flutter run -d emulator-5554
 ```
 
-3. Habilite **E-mail/senha** em Authentication no Console Firebase, publique `firestore.rules` e crie sua conta pela tela **Criar conta**. O passo a passo esta em [docs/FIREBASE.md](docs/FIREBASE.md).
+3. Habilite **E-mail/senha** em Authentication no Console Firebase, publique `firestore.rules` e crie sua conta pela tela **Criar conta**. O passo a passo está em [docs/FIREBASE.md](docs/FIREBASE.md).
 
-Nao existem contas de demonstracao no app executado. Os dados ficticios ficam apenas em `test/support`, injetados nos testes. Uma conta nova comeca sem turmas; crie uma turma e compartilhe o codigo gerado.
+Não existem contas de demonstracao no app executado. Os dados ficticios ficam apenas em `test/support`, injetados nos testes. Uma conta nova comeca sem turmas; crie uma turma e compartilhe o código gerado.
 
 ## Firebase
 
-O `FirebaseAuthenticationService` usa Firebase Auth para cadastro, login, nome do usuario, restauracao da sessao e recuperacao de senha. O modelo `AppUser` nao contem senha. O `FirebaseSyncService` persiste o perfil por UID e grava somente a turma ou publicacao alterada.
+O `FirebaseAuthenticationService` usa Firebase Auth para cadastro, login, nome do usuário, restauracao da sessão e recuperação de senha. O modelo `AppUser` não contem senha. O `FirebaseSyncService` persiste o perfil por UID e grava somente a turma ou publicação alterada.
 
-Sem Firebase disponivel, o app informa erro e nao libera login mockado. Falhas do Firestore aparecem na tela de turmas com opcao de tentar novamente; uma falha ao salvar o perfil nao apaga a conta ja criada em Authentication. As regras versionadas protegem perfis por UID e publicacoes por membro/criador. Os metadados das turmas sao consultaveis por usuarios autenticados para a busca por codigo.
+Sem Firebase disponivel, o app informa erro e não libera login mockado. Falhas do Firestore aparecem na tela de turmas com opcao de tentar novamente; uma falha ao salvar o perfil não apaga a conta já criada em Authentication. As regras versionadas protegem perfis por UID e publicações por membro/criador. Os metadados das turmas são consultaveis por usuários autenticados para a busca por código.
 
-A configuracao gerada pelo FlutterFire esta em `lib/firebase_options.dart`, para o projeto `academya-fiap-4547a`, com aplicativos Android, web e Windows. O adaptador em `lib/core/firebase/firebase_options.dart` usa esse arquivo automaticamente. Os identificadores publicos do aplicativo nao substituem regras de seguranca do Firestore.
+A configuração gerada pelo FlutterFire está em `lib/firebase_options.dart`, para o projeto `academya-fiap-4547a`, com aplicativos Android, web e Windows. O adaptador em `lib/core/firebase/firebase_options.dart` usa esse arquivo automaticamente. Os identificadores publicos do aplicativo não substituem regras de seguranca do Firestore.
 
 ### Opcao 1: FlutterFire CLI
 
@@ -109,7 +109,7 @@ dart pub global activate flutterfire_cli
 flutterfire configure
 ```
 
-O arquivo gerado em `lib/firebase_options.dart` ja e utilizado pelo app; nao e necessario substituir arquivos nem passar `--dart-define`. Apos reconfigurar, encerre a execucao anterior e rode novamente o aplicativo. O guia para habilitar os servicos no console e comprovar gravacao esta em [docs/FIREBASE.md](docs/FIREBASE.md).
+O arquivo gerado em `lib/firebase_options.dart` já é utilizado pelo app; não é necessário substituir arquivos nem passar `--dart-define`. Após reconfigurar, encerre a execucao anterior e rode novamente o aplicativo. O guia para habilitar os servicos no console e comprovar gravacao está em [docs/FIREBASE.md](docs/FIREBASE.md).
 
 ### Opcao 2: dart-define
 
@@ -123,15 +123,15 @@ flutter run \
   --dart-define=FIREBASE_STORAGE_BUCKET=seu_project.appspot.com
 ```
 
-Os valores de `--dart-define` sao uma substituicao opcional da configuracao gerada. Habilite **E-mail/senha** e publique as regras no projeto utilizado. Login anonimo nao e mais usado. O app consulta dados ao entrar/reabrir e ao atualizar a lista; ainda nao ha listeners de publicacoes em tempo real.
+Os valores de `--dart-define` são uma substituicao opcional da configuração gerada. Habilite **E-mail/senha** e publique as regras no projeto utilizado. Login anonimo não e mais usado. O app consulta dados ao entrar/reabrir e ao atualizar a lista; ainda não ha listeners de publicações em tempo real.
 
 ## Decisoes tecnicas
 
 - O app separa telas por feature para facilitar manutencao e crescimento.
-- O repositorio coordena a sessao real e o estado das turmas/publicacoes do usuario.
+- O repositorio coordena a sessão real e o estado das turmas/publicações do usuário.
 - Firebase Auth e Firestore ficam isolados em servicos para permitir testes sem acessar contas reais.
-- A criacao de publicacoes verifica permissao pela autoria da turma.
-- O app restaura a sessao persistida pelo SDK e inicia no login quando nao ha uma conta real autenticada.
+- A criacao de publicações verifica permissão pela autoria da turma.
+- O app restaura a sessão persistida pelo SDK e inicia no login quando não ha uma conta real autenticada.
 - As cores dos componentes derivam do `ColorScheme` de cada tema, preservando contraste.
 - Nomes de turmas e metadados usam quebra de linha; as listas reservam espaco rolavel para o botao flutuante.
 - Os formularios mantem todos os campos montados durante a rolagem para preservar validacao.
@@ -139,9 +139,9 @@ Os valores de `--dart-define` sao uma substituicao opcional da configuracao gera
 
 ## Instalar no celular
 
-O passo a passo de instalacao por APK e por cabo USB esta em [docs/INSTALACAO.md](docs/INSTALACAO.md).
+O passo a passo de instalação por APK e por cabo USB está em [docs/INSTALACAO.md](docs/INSTALACAO.md).
 
-O APK universal e gerado em `build/app/outputs/flutter-apk/app-release.apk`:
+O APK universal é gerado em `build/app/outputs/flutter-apk/app-release.apk`:
 
 ```powershell
 flutter build apk --release
@@ -156,8 +156,8 @@ flutter test
 flutter analyze
 ```
 
-Os testes cobrem login, cadastro invalido, criacao de grupo, formulario de publicacao, limites de 50/900 caracteres, selecao de tipo, expansao de conteudo e logout. Os fluxos rodam nos temas claro/escuro em 320x568, 360x800, 430x932, 800x360, 320x640 com fonte 2x, 768x1024 e 1280x800, incluindo teclado aberto. Tambem verificam troca de tema sem perder navegacao e restauracao da preferencia salva.
+Os testes cobrem login, cadastro invalido, criacao de grupo, formulario de publicação, limites de 50/900 caracteres, selecao de tipo, expansão de conteudo e logout. Os fluxos rodam nos temas claro/escuro em 320x568, 360x800, 430x932, 800x360, 320x640 com fonte 2x, 768x1024 e 1280x800, incluindo teclado aberto. Tambem verificam troca de tema sem perder navegacao e restauracao da preferencia salva.
 
-Os testes de autenticacao verificam UID real, tratamento dos erros do SDK, cadastro, recuperacao de senha, restauracao da sessao, prevencao de envio duplicado e troca de conta sem expor dados anteriores. Os emuladores locais de Auth/Firestore validam cadastro/login e as regras contra acesso indevido. Instrucoes de execucao em [docs/FIREBASE.md](docs/FIREBASE.md). Testes locais nao comprovam a habilitacao dos servicos no projeto real.
+Os testes de autenticação verificam UID real, tratamento dos erros do SDK, cadastro, recuperação de senha, restauracao da sessão, prevencao de envio duplicado e troca de conta sem expor dados anteriores. Os emuladores locais de Auth/Firestore validam cadastro/login e as regras contra acesso indevido. Instrucoes de execucao em [docs/FIREBASE.md](docs/FIREBASE.md). Testes locais não comprovam a habilitacao dos servicos no projeto real.
 
-Capturas reais do emulador: [login claro](docs/previews/android-login.png), [turmas claras](docs/previews/android-light.png), [turmas escuras](docs/previews/android-dark.png) e [login escuro apos reiniciar](docs/previews/android-login-dark.png).
+Capturas reais do emulador: [login claro](docs/previews/android-login.png), [turmas claras](docs/previews/android-light.png), [turmas escuras](docs/previews/android-dark.png) e [login escuro após reiniciar](docs/previews/android-login-dark.png).

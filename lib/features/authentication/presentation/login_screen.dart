@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(actions: const [ThemeModeButton()]),
       body: AuthCard(
         title: 'Entre na sua conta',
-        subtitle: 'Acompanhe turmas, grupos de estudo e publicacoes.',
+        subtitle: 'Acompanhe turmas, grupos de estudo e publicações.',
         children: [
           Form(
             key: _formKey,
@@ -171,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (mounted) setState(() => _error = error.message);
     } catch (_) {
       if (mounted) {
-        setState(() => _error = 'Nao foi possivel entrar. Tente novamente.');
+        setState(() => _error = 'Não foi possível entrar. Tente novamente.');
       }
     } finally {
       if (mounted) setState(() => _isSubmitting = false);
@@ -206,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (_) {
       if (mounted) {
         setState(
-          () => _error = 'Nao foi possivel enviar o e-mail. Tente novamente.',
+          () => _error = 'Não foi possível enviar o e-mail. Tente novamente.',
         );
       }
     } finally {

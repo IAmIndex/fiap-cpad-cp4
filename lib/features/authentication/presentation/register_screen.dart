@@ -199,7 +199,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       if (mounted) setState(() => _error = error.message);
     } catch (_) {
       if (mounted) {
-        setState(() => _error = 'Nao foi possivel cadastrar. Tente novamente.');
+        setState(() => _error = 'Não foi possível cadastrar. Tente novamente.');
       }
     } finally {
       if (mounted) setState(() => _isSubmitting = false);

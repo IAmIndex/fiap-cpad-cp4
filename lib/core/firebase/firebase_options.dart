@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../firebase_options.dart' as generated;
 
-/// Usa a configuracao do FlutterFire, com substituicao opcional por --dart-define.
+/// Usa a configuração do FlutterFire, com substituicao opcional por --dart-define.
 ///
 /// Exemplo:
 /// flutter run --dart-define=FIREBASE_API_KEY=... --dart-define=FIREBASE_APP_ID=...

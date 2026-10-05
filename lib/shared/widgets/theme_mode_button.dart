@@ -11,7 +11,7 @@ class ThemeModeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = ThemeScope.of(context);
     return PopupMenuButton<ThemeMode>(
-      tooltip: 'Aparencia',
+      tooltip: 'Aparência',
       initialValue: controller.mode,
       icon: Icon(switch (controller.mode) {
         ThemeMode.system => Icons.brightness_auto_rounded,

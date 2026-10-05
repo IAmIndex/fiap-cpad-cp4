@@ -84,7 +84,7 @@ class ClassTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Codigo: ${schoolClass.joinCode}',
+                    'Código: ${schoolClass.joinCode}',
                     style: theme.textTheme.labelLarge,
                   ),
                 ],

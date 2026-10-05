@@ -98,13 +98,13 @@ class AcademyaScope extends InheritedNotifier<AcademyaRepository> {
 
   static AcademyaRepository repositoryOf(BuildContext context) {
     final scope = context.dependOnInheritedWidgetOfExactType<AcademyaScope>();
-    assert(scope != null, 'AcademyaScope nao encontrado na arvore.');
+    assert(scope != null, 'AcademyaScope não encontrado na árvore.');
     return scope!.notifier!;
   }
 
   static FirebaseConnectionStatus firebaseStatusOf(BuildContext context) {
     final scope = context.dependOnInheritedWidgetOfExactType<AcademyaScope>();
-    assert(scope != null, 'AcademyaScope nao encontrado na arvore.');
+    assert(scope != null, 'AcademyaScope não encontrado na árvore.');
     return scope!.firebaseStatus;
   }
 }
