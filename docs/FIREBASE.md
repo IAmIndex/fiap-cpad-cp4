@@ -2,6 +2,39 @@
 
 O app utiliza automaticamente `lib/firebase_options.dart`, gerado para `academya-fiap-4547a`. Agora o login e o cadastro usam Firebase Authentication, sem usuários ficticios ou autenticação anonima.
 
+## Arquivos de configuracao e .env
+
+Nao coloque credenciais no `.env`: este projeto nao carrega variaveis desse arquivo. Ele esta declarado apenas como asset de build. O arquivo pode conter somente um comentario, sem valores.
+
+| Arquivo | Conteudo |
+| --- | --- |
+| `lib/firebase_options.dart` | Configuracao FlutterFire de Android, web e Windows. |
+| `android/app/google-services.json` | Configuracao nativa do mesmo aplicativo Android e projeto. |
+| `firebase.json` | Metadados da CLI e caminho das regras; nao e uma chave de autenticacao. |
+| `.env` | Nao e utilizado para inicializar Firebase. |
+
+Para Android, as correspondencias entre JSON e Dart sao:
+
+| No google-services.json | No FirebaseOptions.android |
+| --- | --- |
+| `project_info.project_id` | `projectId` |
+| `project_info.project_number` | `messagingSenderId` |
+| `client_info.mobilesdk_app_id` do cliente Android | `appId` |
+| `api_key[0].current_key` do cliente Android | `apiKey` |
+| `project_info.storage_bucket` | `storageBucket` |
+
+O pacote Android registrado e `br.com.academya.flutter_application_1`. Os arquivos ja foram alinhados para `academya-fiap-4547a`. Foi encontrada uma configuracao nativa de `academya-fiap-98f4b` junto do Dart do projeto anterior; essa mistura pode causar `[core/duplicate-app]` na inicializacao, antes mesmo do login.
+
+Para obter novamente os arquivos, abra **Configuracoes do projeto > Geral > Seus aplicativos > Android** no Console e baixe `google-services.json` para `android/app/google-services.json`. Para gerar as opcoes Dart e os metadados das plataformas, na pasta do projeto:
+
+```powershell
+flutterfire configure --project=academya-fiap-4547a --platforms=android,web,windows
+```
+
+Depois confira que os arquivos apontam para o mesmo projeto e gere um novo APK. Alterar arquivos no computador nao atualiza o APK ja instalado no celular. Nao use um arquivo do outro projeto nem coloque service accounts/chaves privadas no app.
+
+Referencia: [configuracao FlutterFire](https://firebase.google.com/docs/flutter/setup) e [download da configuracao pelo Console](https://support.google.com/firebase/answer/7015592).
+
 ## 1. Habilitar e-mail/senha
 
 1. Abra o [Console do projeto](https://console.firebase.google.com/project/academya-fiap-4547a/overview).
@@ -113,7 +146,9 @@ $env:JAVA_HOME = 'C:\Program Files\Android\Android Studio\jbr'
 $env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
 ```
 
-O teste exige hosts locais e o projeto `demo-academya`; não cria usuários nem documentos em produção. Foram aprovados 49 testes Flutter e 26 verificacoes nos emuladores. Esses testes não comprovam que voce habilitou E-mail/senha ou publicou as regras no Console real.
+O teste exige hosts locais e o projeto `demo-academya`; não cria usuários nem documentos em produção. Foram aprovados 52 testes Flutter e 26 verificacoes nos emuladores. Esses testes não comprovam que voce habilitou E-mail/senha ou publicou as regras no Console real.
+
+O APK corrigido tambem foi executado no emulador Android contra o projeto real `academya-fiap-4547a`. Uma tentativa com conta ficticia inexistente retornou credenciais invalidas pelo Firebase Auth, confirmando a inicializacao e a resposta do servico, sem cadastrar usuarios reais. A existencia do banco Firestore foi confirmada por consulta de leitura da CLI; a gravacao de perfil e as regras publicadas ainda devem ser verificadas com sua conta real.
 
 ## Referencias
 

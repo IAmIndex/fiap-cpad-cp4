@@ -21,6 +21,7 @@ Future<void> main() async {
     firebaseSyncService: firebaseSyncService,
     authenticationService: FirebaseAuthenticationService(
       auth: firebaseStatus.isConnected ? FirebaseAuth.instance : null,
+      unavailableReason: firebaseStatus.message,
     ),
   );
 

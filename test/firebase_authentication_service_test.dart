@@ -160,6 +160,24 @@ void main() {
     );
   });
 
+  test('initialization failure exposes the actual Firebase error', () async {
+    const reason = 'Firebase indisponivel: [core/duplicate-app]';
+    final service = FirebaseAuthenticationService(
+      auth: null,
+      unavailableReason: reason,
+    );
+    await expectLater(
+      service.signIn(email: 'aluno@academya.com', password: 'Aluno123'),
+      throwsA(
+        isA<AuthenticationFailure>().having(
+          (error) => error.message,
+          'message',
+          reason,
+        ),
+      ),
+    );
+  });
+
   test(
     'password reset delegates to Firebase without exposing account existence',
     () async {

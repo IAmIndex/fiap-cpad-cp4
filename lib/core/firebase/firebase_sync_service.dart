@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../data/models/app_user.dart';
 import '../../data/models/publication.dart';
@@ -62,6 +63,7 @@ class FirebaseSyncService {
       _firestore = FirebaseFirestore.instance;
       return FirebaseConnectionStatus.connected();
     } catch (error) {
+      debugPrint('Falha ao inicializar Firebase: $error');
       return FirebaseConnectionStatus.failed(error);
     }
   }

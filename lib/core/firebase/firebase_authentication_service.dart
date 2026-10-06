@@ -4,14 +4,16 @@ import '../../data/models/app_user.dart';
 import '../../data/services/authentication_service.dart';
 
 class FirebaseAuthenticationService implements AuthenticationService {
-  FirebaseAuthenticationService({required this.auth});
+  FirebaseAuthenticationService({required this.auth, this.unavailableReason});
 
   final FirebaseAuth? auth;
+  final String? unavailableReason;
 
   FirebaseAuth get _availableAuth =>
       auth ??
-      (throw const AuthenticationFailure(
-        'Firebase indisponível. Confira a configuração e reinicie o app.',
+      (throw AuthenticationFailure(
+        unavailableReason ??
+            'Firebase indisponível. Confira a configuração e reinicie o app.',
       ));
 
   @override

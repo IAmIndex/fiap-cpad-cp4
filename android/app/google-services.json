@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "710717179947",
-    "project_id": "academya-fiap-98f4b",
-    "storage_bucket": "academya-fiap-98f4b.firebasestorage.app"
+    "project_number": "138098843263",
+    "project_id": "academya-fiap-4547a",
+    "storage_bucket": "academya-fiap-4547a.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:710717179947:android:7eef825c587f3bf522c26e",
+        "mobilesdk_app_id": "1:138098843263:android:8496e98895ddb72426694a",
         "android_client_info": {
           "package_name": "br.com.academya.flutter_application_1"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "138098843263-lenhhadrn0a9i224gdpj35a47h17rf6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCBjAg-mvm6yOOR3Toq8NCxnEJCVSAYIWQ"
+          "current_key": "AIzaSyAWn7jnK-ZiV1_Eg7144z5FppV-YnvGmc0"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138098843263-lenhhadrn0a9i224gdpj35a47h17rf6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
