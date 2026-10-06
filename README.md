@@ -1,6 +1,6 @@
 # Academya
 
-Aplicativo Flutter para comunicacao entre professores e alunos em instituicoes escolares. O MVP centraliza turmas, grupos de estudo, comunicados, materiais e atividades em uma experiência mobile navegável, componentizada e preparada para sincronização com Firebase.
+Aplicativo Flutter para comunicação entre professores e alunos em instituições escolares. O MVP centraliza turmas, grupos de estudo, comunicados, materiais e atividades em uma experiência mobile navegável, componentizada e preparada para sincronização com Firebase.
 
 ## Integrantes
 
