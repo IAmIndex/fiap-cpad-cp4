@@ -98,7 +98,7 @@ Não existem contas de demonstração no app executado. Os dados fictícios fica
 
 O `FirebaseAuthenticationService` usa Firebase Auth para cadastro, login, nome do usuário, restauração da sessão e recuperação de senha. O modelo `AppUser` não contém senha. O `FirebaseSyncService` persiste o perfil por UID e grava somente a turma ou publicação alterada.
 
-Sem Firebase disponivel, o app informa erro e não libera login mockado. Falhas do Firestore aparecem na tela de turmas com opcao de tentar novamente; uma falha ao salvar o perfil não apaga a conta já criada em Authentication. As regras versionadas protegem perfis por UID e publicações por membro/criador. Os metadados das turmas são consultaveis por usuários autenticados para a busca por código.
+Sem Firebase disponível, o app informa erro e não libera login mockado. Falhas do Firestore aparecem na tela de turmas com opcao de tentar novamente; uma falha ao salvar o perfil não apaga a conta já criada em Authentication. As regras versionadas protegem perfis por UID e publicações por membro/criador. Os metadados das turmas são consultáveis por usuários autenticados para a busca por código.
 
 A configuração gerada pelo FlutterFire está em `lib/firebase_options.dart`, para o projeto `academya-fiap-4547a`, com aplicativos Android, web e Windows. O adaptador em `lib/core/firebase/firebase_options.dart` usa esse arquivo automaticamente. Os identificadores públicos do aplicativo não substituem regras de segurança do Firestore.
 
